@@ -291,7 +291,7 @@ int main(int argc, char* argv[]) {
         sprintf(credit_text, "CREDIT %02lu", credits);
         buffer_draw_text(&buffer, text_spritesheet, credit_text, 164, 7, rgb_to_uint32(216, 218, 101));
 
-        buffer_draw_number(&buffer, number_spritesheet, score, 4 + 2 * number_spritesheet.width, game.height - 2 * number_spritesheet.height - 12, rgb_to_uint32(128, 0, 0));
+        buffer_draw_number(&buffer, number_spritesheet, score, 4 + 2 * number_spritesheet.width, game.height - 2 * number_spritesheet.height - 12, rgb_to_uint32(216, 218, 101));
 
         // horizontal line just above the credit text
         for (size_t i = 0; i < game.width; ++i) {
