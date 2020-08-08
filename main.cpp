@@ -212,7 +212,7 @@ int main(int argc, char* argv[]) {
 
     glLinkProgram(shader_id);
 
-    if(!validate_program(shader_id)) {
+    if (!validate_program(shader_id)) {
         fprintf(stderr, "Error while validating shader.\n");
         glfwTerminate();
         glDeleteVertexArrays(1, &fullscreen_triangle_vao);
@@ -381,6 +381,7 @@ int main(int argc, char* argv[]) {
     Game game;
     game.width = buffer_width;
     game.height = buffer_height;
+    game.num_bullets = 0;
     game.num_aliens = 55;
     game.aliens = new Alien[game.num_aliens];
 
