@@ -32,12 +32,19 @@ typedef struct Player_Struct
     size_t life;
 } Player;
 
+typedef struct Bullet_Struct
+{
+    size_t x, y;
+    int dir;
+} Bullet;
+
 typedef struct Game_Struct
 {
     size_t width, height;
     size_t num_aliens;
     Alien* aliens;
     Player player;
+    Bullet bullets[GAME_MAX_BULLETS];
 } Game;
 
 typedef struct Sprite_Animation_Struct
