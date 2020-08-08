@@ -2,8 +2,7 @@
 #ifndef GAME_OBJECTS_H
 #define GAME_OBJECTS_H
 
-#include <cstdio>
-#include <cstdint>
+#include "main.h"
 
 #define GAME_MAX_BULLETS 128
 

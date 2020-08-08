@@ -1,4 +1,3 @@
-#include "main.h"
 #include "game-objects.h"
 
 // clear buffer to a certain color

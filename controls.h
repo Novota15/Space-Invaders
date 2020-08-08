@@ -2,9 +2,7 @@
 #ifndef CONTROLS_H
 #define CONTROLS_H
 
-#include <cstdio>
-#include <cstdint>
-#include <GLFW/glfw3.h>
+#include "main.h"
 
 // global vars
 int move_dir = 0;
