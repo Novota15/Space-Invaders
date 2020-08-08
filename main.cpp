@@ -2,7 +2,10 @@
 #include "game-objects.h"
 #include "controls.h"
 
-#define GAME_MAX_BULLETS 128
+// global vars
+int move_dir = 0;
+bool fire_pressed = 0;
+bool game_running = false;
 
 // error and debug
 #define GL_ERROR_CASE(glerror)\
