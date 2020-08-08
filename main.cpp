@@ -51,6 +51,14 @@ double random(uint32_t* rng) {
     return (double)xorshift32(rng) / std::numeric_limits<uint32_t>::max();
 }
 
+GLFWwindow create_game_window(size_t buffer_width, size_t buffer height) {
+    GLFWwindow* window = glfwCreateWindow(2 * buffer_width, 2 * buffer_height, "Space Invaders", NULL, NULL);
+    if (!window) {
+        glfwTerminate();
+        // return -1;
+    }
+    return window;
+}
 
 int main(int argc, char* argv[]) {
     // error reporting
@@ -68,11 +76,12 @@ int main(int argc, char* argv[]) {
     // create game window
     const size_t buffer_width = 224;
     const size_t buffer_height = 256;
-    GLFWwindow* window = glfwCreateWindow(2 * buffer_width, 2 * buffer_height, "Space Invaders", NULL, NULL);
-    if(!window) {
-        glfwTerminate();
-        return -1;
-    }
+    GLWwindow* window = create_game_window(buffer_width, buffer_height);
+    // GLFWwindow* window = glfwCreateWindow(2 * buffer_width, 2 * buffer_height, "Space Invaders", NULL, NULL);
+    // if(!window) {
+    //     glfwTerminate();
+    //     return -1;
+    // }
 
     // arrow key functionality
     glfwSetKeyCallback(window, key_callback);
@@ -306,17 +315,17 @@ int main(int argc, char* argv[]) {
 
         buffer_draw_number(&buffer, number_spritesheet, game.player.life, 4, 7, rgb_to_uint32(216, 218, 101));
         size_t xp =  11 + number_spritesheet.width;
-        for(size_t i = 0; i < game.player.life - 1; ++i) {
+        for (size_t i = 0; i < game.player.life - 1; ++i) {
             buffer_draw_sprite(&buffer, player_sprite, xp, 7, rgb_to_uint32(216, 218, 101));
             xp += player_sprite.width + 2;
         }
 
-        for(size_t i = 0; i < game.width; ++i) {
+        for (size_t i = 0; i < game.width; ++i) {
             buffer.data[game.width * 16 + i] = rgb_to_uint32(216, 218, 101);
         }
 
 
-        for(size_t ai = 0; ai < game.num_aliens; ++ai) {
+        for (size_t ai = 0; ai < game.num_aliens; ++ai) {
             if (death_counters[ai] == 0) continue;
 
             const Alien& alien = game.aliens[ai];
@@ -330,7 +339,7 @@ int main(int argc, char* argv[]) {
             }
         }
 
-        for(size_t bi = 0; bi < game.num_bullets; ++bi) {
+        for (size_t bi = 0; bi < game.num_bullets; ++bi) {
             const Bullet& bullet = game.bullets[bi];
             const Sprite* sprite;
             if(bullet.dir > 0) sprite = &player_bullet_sprite;
@@ -354,7 +363,7 @@ int main(int argc, char* argv[]) {
         glfwSwapBuffers(window);
 
         // Simulate bullets
-        for(size_t bi = 0; bi < game.num_bullets; ++bi) {
+        for (size_t bi = 0; bi < game.num_bullets; ++bi) {
             game.bullets[bi].y += game.bullets[bi].dir;
             if(game.bullets[bi].y >= game.height || game.bullets[bi].y < player_bullet_sprite.height) {
                 game.bullets[bi] = game.bullets[game.num_bullets - 1];
