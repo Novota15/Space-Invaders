@@ -20,4 +20,4 @@ typedef struct Sprite_Struct
     uint8_t* data;
 } Sprite;
 
-#endif GAME_OBJECTS_H
+#endif
