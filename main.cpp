@@ -240,7 +240,7 @@ int main(int argc, char* argv[]) {
 
     // Sprite player_sprite = build_player_sprite();
 
-    // Sprite alien_sprites[6];
+    Sprite alien_sprites[6];
 
     alien_sprites[0].width = 8;
     alien_sprites[0].height = 8;
