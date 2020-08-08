@@ -238,33 +238,12 @@ int main(int argc, char* argv[]) {
     // build sprites
     Sprite alien_sprites[6];
     build_alien_sprites(alien_sprites);
-    
     Sprite alien_death_sprite = build_alien_death_sprite();
-
     Sprite player_sprite = build_player_sprite();
-
-    Sprite bullet_sprite;
-    bullet_sprite.width = 1;
-    bullet_sprite.height = 3;
-    bullet_sprite.data = new uint8_t[3]
-    {
-        1, // @
-        1, // @
-        1  // @
-    };
+    Sprite bullet_sprite = build_bullet_sprite();
 
     Sprite_Animation alien_animation[3];
-
-    for(size_t i = 0; i < 3; ++i) {
-        alien_animation[i].loop = true;
-        alien_animation[i].num_frames = 2;
-        alien_animation[i].frame_duration = 10;
-        alien_animation[i].time = 0;
-
-        alien_animation[i].frames = new Sprite*[2];
-        alien_animation[i].frames[0] = &alien_sprites[2 * i];
-        alien_animation[i].frames[1] = &alien_sprites[2 * i + 1];
-    }
+    build_alien_animation(alien_animation);
 
     Game game;
     game.width = buffer_width;
