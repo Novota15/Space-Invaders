@@ -323,7 +323,7 @@ int main(int argc, char* argv[]) {
             if (alien.type == ALIEN_DEAD) {
                 buffer_draw_sprite(&buffer, alien_death_sprite, alien.x, alien.y, rgb_to_uint32(68, 225, 38));
             } else {
-                const SpriteAnimation& animation = alien_animation[alien.type - 1];
+                const Sprite_Animation& animation = alien_animation[alien.type - 1];
                 size_t current_frame = animation.time / animation.frame_duration;
                 const Sprite& sprite = *animation.frames[current_frame];
                 buffer_draw_sprite(&buffer, sprite, alien.x, alien.y, rgb_to_uint32(68, 225, 38));
@@ -409,7 +409,7 @@ int main(int argc, char* argv[]) {
                     const Alien& alien = game.aliens[ai];
                     if (alien.type == ALIEN_DEAD) continue;
 
-                    const SpriteAnimation& animation = alien_animation[alien.type - 1];
+                    const Sprite_Animation& animation = alien_animation[alien.type - 1];
                     size_t current_frame = animation.time / animation.frame_duration;
                     const Sprite& alien_sprite = *animation.frames[current_frame];
                     bool overlap = sprite_overlap_check(
