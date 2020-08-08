@@ -169,7 +169,7 @@ Sprite build_bullet_sprite() {
     return bullet_sprite;
 }
 
-void build_alien_animation(Sprite_Animation *alien_animation) {
+void build_alien_animation(Sprite *alien_sprites, Sprite_Animation *alien_animation) {
     for (size_t i = 0; i < 3; ++i) {
         alien_animation[i].loop = true;
         alien_animation[i].num_frames = 2;
