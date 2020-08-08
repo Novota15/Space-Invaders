@@ -193,7 +193,9 @@ int main(int argc, char* argv[]) {
     Sprite alien_death_sprite = build_alien_death_sprite();
     Sprite player_sprite = build_player_sprite();
     Sprite bullet_sprite = build_bullet_sprite();
-    Sprite alien_bullet_sprite = build_alien_bullet_sprites();
+
+    Sprite alien_bullet_sprite[2];
+    build_alien_bullet_sprites(alien_bullet_sprite);
 
     Sprite text_spritesheet = build_text_spritesheet();
     Sprite number_spritesheet = text_spritesheet;

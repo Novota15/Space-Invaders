@@ -168,8 +168,7 @@ Sprite build_bullet_sprite() {
     return bullet_sprite;
 }
 
-Sprite build_alien_bullet_sprites() {
-    Sprite alien_bullet_sprite[2];
+void build_alien_bullet_sprites(Sprite *alien_bullet_sprite) {
     alien_bullet_sprite[0].width = 3;
     alien_bullet_sprite[0].height = 7;
     alien_bullet_sprite[0].data = new uint8_t[21]
@@ -183,7 +182,7 @@ Sprite build_alien_bullet_sprites() {
     {
         0,1,0,0,0,1,0,1,0,1,0,0,0,1,0,0,0,1,0,1,0,
     };
-    return alien_bullet_sprite;
+    return;
 }
 
 Sprite build_text_spritesheet() {

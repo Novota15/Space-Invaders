@@ -82,7 +82,7 @@ Sprite build_player_sprite();
 
 Sprite build_bullet_sprite();
 
-Sprite build_alien_bullet_sprites();
+void build_alien_bullet_sprites(Sprite *alien_bullet_sprite);
 
 Sprite build_text_spritesheet();
 
