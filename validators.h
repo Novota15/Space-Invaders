@@ -4,7 +4,7 @@
 
 #include "main.h"
 
-void validate_shader(GLuint shader, const char *file = 0);
+void validate_shader(GLuint shader, const char *file);
 
 bool validate_program(GLuint program);
 
