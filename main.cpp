@@ -233,6 +233,8 @@ int main(int argc, char* argv[]) {
     Sprite alien_death_sprite = build_alien_death_sprite();
     Sprite player_sprite = build_player_sprite();
     Sprite bullet_sprite = build_bullet_sprite();
+    Sprite number_spritesheet = build_text_spritesheet();
+    number_spritesheet.data += 16 * 35;
 
     Sprite_Animation alien_animation[3];
     build_alien_animation(alien_sprites, alien_animation);
