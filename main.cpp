@@ -62,7 +62,7 @@ int main(int argc, char* argv[]) {
     if (err != GLEW_OK) {
         fprintf(stderr, "Error initializing GLEW.\n");
         glfwTerminate();
-        return -1
+        return -1;
     }
 
     // can make calls to opengl functions now
