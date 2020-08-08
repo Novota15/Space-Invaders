@@ -4,11 +4,14 @@ LFLAGS = -lglfw -lGLU -lGL -lGLEW
 
 all: main
 
-main: main.o
-	$(CC) main.o $(LFLAGS) -o invaders
+main: main.o game-objects.o
+	$(CC) main.o game-objects.o $(LFLAGS) -o invaders
 
-main.o: main.cpp
-	$(CC) -c main.cpp $(CFLAGS)
+main.o: main.cpp main.h
+	$(CC) -c main.cpp main.h $(CFLAGS)
+
+game-objects.o: game-objects.cpp game-objects.h
+	$(CC) -c game-objects.cpp game-objects.h $(CFLAGS)
 
 clean:
 	rm -f invaders
