@@ -155,17 +155,15 @@ Sprite build_player_sprite() {
     return player_sprite;
 }
 
-Sprite build_bullet_sprite() {
-    Sprite bullet_sprite;
-    bullet_sprite.width = 1;
-    bullet_sprite.height = 3;
-    bullet_sprite.data = new uint8_t[3]
+Sprite build_player_bullet_sprite() {
+    Sprite player_bullet_sprite;
+    player_bullet_sprite.width = 1;
+    player_bullet_sprite.height = 3;
+    player_bullet_sprite.data = new uint8_t[3]
     {
-        1, // @
-        1, // @
-        1  // @
+        1, 1, 1
     };
-    return bullet_sprite;
+    return player_bullet_sprite;
 }
 
 void build_alien_bullet_sprites(Sprite *alien_bullet_sprite) {
