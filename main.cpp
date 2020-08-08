@@ -102,6 +102,8 @@ int main(int argc, char* argv[]) {
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 
     // create game window
+    const size_t buffer_width = 224;
+    const size_t buffer_height = 256;
     GLFWwindow* window = glfwCreateWindow(2 * buffer_width, 2 * buffer_height, "Space Invaders", NULL, NULL);
     if(!window) {
         glfwTerminate();
@@ -133,10 +135,6 @@ int main(int argc, char* argv[]) {
     printf("Shading Language: %s\n", glGetString(GL_SHADING_LANGUAGE_VERSION));
 
     glClearColor(1.0, 0.0, 0.0, 1.0);
-
-    // create graphics buffer
-    const size_t buffer_width = 224;
-    const size_t buffer_height = 256;
 
     Buffer buffer;
     buffer.width = buffer_width;
