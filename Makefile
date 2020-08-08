@@ -8,16 +8,16 @@ main:  main.o validators.o game-objects.o controls.o
 	$(CC) $^ $(LFLAGS) -o invaders
 
 main.o: main.cpp main.h
-	$(CC) -c main.cpp main.h $(CFLAGS)
+	$(CC) -c $< $(CFLAGS)
 
 validators.o: validators.cpp validators.h
-	$(CC) -c validators.cpp validators.h $(CFLAGS)
+	$(CC) -c $< $(CFLAGS)
 
 game-objects.o: game-objects.cpp game-objects.h
-	$(CC) -c game-objects.cpp game-objects.h $(CFLAGS)
+	$(CC) -c $< $(CFLAGS)
 
 controls.o: controls.cpp controls.h
-	$(CC) -c controls.cpp controls.h $(CFLAGS)
+	$(CC) -c $< $(CFLAGS)
 
 clean:
 	rm -f invaders
