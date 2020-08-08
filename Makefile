@@ -4,8 +4,8 @@ LFLAGS = -lglfw -lGLU -lGL -lGLEW
 
 all: main
 
-main:  game-objects.o controls.o main.o
-	$(CC) game-objects.o controls.o main.o $(LFLAGS) -o invaders
+main:  main.o game-objects.o controls.o 
+	$(CC) main.o game-objects.o controls.o $(LFLAGS) -o invaders
 
 main.o: main.cpp main.h
 	$(CC) -c main.cpp main.h $(CFLAGS)
