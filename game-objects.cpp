@@ -279,7 +279,7 @@ void build_alien_animation(Sprite *alien_sprites, Sprite_Animation *alien_animat
     return;
 }
 
-void build_alien_bullet_animation(Sprite *alien_bullet_sprite, Sprite_Animation alien_bullet_animation) {
+void build_alien_bullet_animation(Sprite *alien_bullet_sprite, Sprite_Animation *alien_bullet_animation) {
     alien_bullet_animation.loop = true;
     alien_bullet_animation.num_frames = 2;
     alien_bullet_animation.frame_duration = 5;
