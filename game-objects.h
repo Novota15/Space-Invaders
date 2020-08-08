@@ -28,6 +28,14 @@ typedef struct Alien_Struct
     uint8_t type;
 } Alien;
 
+enum AlienType: uint8_t
+{
+    ALIEN_DEAD   = 0,
+    ALIEN_TYPE_A = 1,
+    ALIEN_TYPE_B = 2,
+    ALIEN_TYPE_C = 3
+};
+
 typedef struct Player_Struct
 {
     size_t x, y;
@@ -44,6 +52,7 @@ typedef struct Game_Struct
 {
     size_t width, height;
     size_t num_aliens;
+    size_t num_bullets;
     Alien* aliens;
     Player player;
     Bullet bullets[GAME_MAX_BULLETS];
