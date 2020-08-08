@@ -229,7 +229,7 @@ int main(int argc, char* argv[]) {
     }
 
     // background color
-    uint32_t clear_color = rgb_to_uint32(36, 32, 80);
+    uint32_t clear_color = rgb_to_uint32(29, 28, 60);
 
     game_running = true;
 
@@ -258,10 +258,10 @@ int main(int argc, char* argv[]) {
         for (size_t bi = 0; bi < game.num_bullets; ++bi) {
             const Bullet& bullet = game.bullets[bi];
             const Sprite& sprite = bullet_sprite;
-            buffer_draw_sprite(&buffer, sprite, bullet.x, bullet.y, rgb_to_uint32(128, 0, 0));
+            buffer_draw_sprite(&buffer, sprite, bullet.x, bullet.y, rgb_to_uint32(255, 5, 219));
         }
 
-        buffer_draw_sprite(&buffer, player_sprite, game.player.x, game.player.y, rgb_to_uint32(128, 0, 0));
+        buffer_draw_sprite(&buffer, player_sprite, game.player.x, game.player.y, rgb_to_uint32(216, 218, 101));
 
         // Update animations
         for (size_t i = 0; i < 3; ++i) {
