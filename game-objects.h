@@ -59,6 +59,8 @@ void buffer_draw_sprite(Buffer* buffer, const Sprite& sprite, size_t x, size_t y
 
 void build_alien_sprites(Sprite *alien_sprites);
 
+Sprite build_alien_death_sprite();
+
 Sprite build_player_sprite();
 
 #endif

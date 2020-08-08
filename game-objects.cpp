@@ -121,6 +121,23 @@ void build_alien_sprites(Sprite *alien_sprites) {
     return;
 }
 
+Sprite build_alien_death_sprite() {
+    Sprite alien_death_sprite;
+    alien_death_sprite.width = 13;
+    alien_death_sprite.height = 7;
+    alien_death_sprite.data = new uint8_t[91]
+    {
+        0,1,0,0,1,0,0,0,1,0,0,1,0, // .@..@...@..@.
+        0,0,1,0,0,1,0,1,0,0,1,0,0, // ..@..@.@..@..
+        0,0,0,1,0,0,0,0,0,1,0,0,0, // ...@.....@...
+        1,1,0,0,0,0,0,0,0,0,0,1,1, // @@.........@@
+        0,0,0,1,0,0,0,0,0,1,0,0,0, // ...@.....@...
+        0,0,1,0,0,1,0,1,0,0,1,0,0, // ..@..@.@..@..
+        0,1,0,0,1,0,0,0,1,0,0,1,0  // .@..@...@..@.
+    };
+    return alien_death_sprite;
+}
+
 Sprite build_player_sprite() {
     Sprite player_sprite;
     player_sprite.width = 11;

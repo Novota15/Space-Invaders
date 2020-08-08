@@ -206,10 +206,23 @@ int main(int argc, char* argv[]) {
 
     // prepare game
 
+    // build sprites
     Sprite alien_sprites[6];
-    build_alien_sprites(alien_sprites);    
+    build_alien_sprites(alien_sprites);
+    
+    Sprite alien_death_sprite = build_alien_death_sprite();
 
     Sprite player_sprite = build_player_sprite();
+
+    Sprite bullet_sprite;
+    bullet_sprite.width = 1;
+    bullet_sprite.height = 3;
+    bullet_sprite.data = new uint8_t[3]
+    {
+        1, // @
+        1, // @
+        1  // @
+    };
 
     Sprite_Animation alien_animation[3];
 
@@ -298,13 +311,18 @@ int main(int argc, char* argv[]) {
     glfwTerminate();
     glDeleteVertexArrays(1, &fullscreen_triangle_vao);
 
-    delete[] alien_sprite0.data;
-    delete[] alien_sprite1.data;
-    delete[] alien_animation->frames;
+    for (size_t i = 0; i < 6; ++i) {
+        delete[] alien_sprites[i].data;
+    }
+
+    delete[] alien_death_sprite.data;
+
+    for (size_t i = 0; i < 3; ++i) {
+        delete[] alien_animation[i].frames;
+    }
     delete[] buffer.data;
     delete[] game.aliens;
-
-    delete alien_animation;
+    delete[] death_counters;
 
     return 0;
 }
