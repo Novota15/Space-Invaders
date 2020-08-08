@@ -180,5 +180,5 @@ void build_alien_animation(Sprite *alien_sprites, Sprite_Animation *alien_animat
         alien_animation[i].frames[0] = &alien_sprites[2 * i];
         alien_animation[i].frames[1] = &alien_sprites[2 * i + 1];
     }
-    return
+    return;
 }
