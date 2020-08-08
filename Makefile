@@ -1,14 +1,12 @@
-CC = gcc
-CFLAGS = -c -g -lglfw -lGLU -lGL -lGLEW
-LFLAGS = -g -lglfw -lGLU -lGL -lGLEW
+LFLAGS = -lglfw -lGLU -lGL -lGLEW
 
 all: main
 
-main: main.o
-	$(CC) $(LFLAGS) $^ -o $@
+invaders: main.o
+	g++ main.o -o invaders
 
-main.o: main.c
-	$(CC) $(CFLAGS) $<
+main.o: main.cpp
+	g++ -c main.cpp $(LFLAGS)
 
 clean:
 	rm -f main
