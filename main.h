@@ -11,8 +11,8 @@
 #include <GLFW/glfw3.h>
 
 // global vars
-extern int move_dir = 0;
-extern bool fire_pressed = 0;
-extern bool game_running = false;
+extern int move_dir;
+extern bool fire_pressed;
+extern bool game_running;
 
 #endif
