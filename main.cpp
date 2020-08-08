@@ -285,7 +285,7 @@ int main(int argc, char* argv[]) {
         buffer_clear(&buffer, clear_color);
 
         // Draw
-        buffer_draw_text(&buffer, text_spritesheet, "SCORE", 4, game.height - text_spritesheet.height - 7, rgb_to_uint32(128, 0, 0));
+        buffer_draw_text(&buffer, text_spritesheet, "SCORE", 4, game.height - text_spritesheet.height - 7, rgb_to_uint32(216, 218, 101));
 
         char credit_text[16];
         sprintf(credit_text, "CREDIT %02lu", credits);
