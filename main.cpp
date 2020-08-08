@@ -1,26 +1,4 @@
-// standard C IO header
-#include <cstdio>
-// include loading library
-#include <GL/glew.h>
-// include GLFW - lightweight opengl library
-#include <GLFW/glfw3.h>
-#include <cstdint>
-
-
-// programming CPU is easier than GPU
-// will render on CPU using a buffer then pass to GPU to draw pixels
-struct Buffer
-{
-    size_t width, height;
-    // to store 4 8-bit pixel color values
-    uint32_t* data;
-};
-
-struct Sprite
-{
-    size_t width, height;
-    uint8_t* data;
-};
+#include "main.h"
 
 // error and debug
 #define GL_ERROR_CASE(glerror)\
@@ -58,7 +36,7 @@ void validate_shader(GLuint shader, const char *file = 0) {
 
     glGetShaderInfoLog(shader, BUFFER_SIZE, &length, buffer);
 
-    if(length>0) {
+    if(length > 0) {
         printf("Shader %d(%s) compile error: %s\n", shader, (file? file: ""), buffer);
     }
 }
@@ -70,7 +48,7 @@ bool validate_program(GLuint program) {
 
     glGetProgramInfoLog(program, BUFFER_SIZE, &length, buffer);
 
-    if(length>0) {
+    if(length > 0) {
         printf("Program %d link error: %s\n", program, buffer);
         return false;
     }
