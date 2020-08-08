@@ -120,3 +120,20 @@ void build_alien_sprites(Sprite *alien_sprites) {
     };
     return;
 }
+
+Sprite build_player_sprite() {
+    Sprite player_sprite;
+    player_sprite.width = 11;
+    player_sprite.height = 7;
+    player_sprite.data = new uint8_t[77]
+    {
+        0,0,0,0,0,1,0,0,0,0,0, // .....@.....
+        0,0,0,0,1,1,1,0,0,0,0, // ....@@@....
+        0,0,0,0,1,1,1,0,0,0,0, // ....@@@....
+        0,1,1,1,1,1,1,1,1,1,0, // .@@@@@@@@@.
+        1,1,1,1,1,1,1,1,1,1,1, // @@@@@@@@@@@
+        1,1,1,1,1,1,1,1,1,1,1, // @@@@@@@@@@@
+        1,1,1,1,1,1,1,1,1,1,1, // @@@@@@@@@@@
+    };
+    return player_sprite;
+}
