@@ -48,7 +48,7 @@ int main(int argc, char* argv[]) {
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 
     // create game window
-    window = glfwCreateWindow(640, 480, "Space Invaders", NULL, NULL);
+    GLFWwindow *window = glfwCreateWindow(640, 480, "Space Invaders", NULL, NULL);
     if(!window) {
         glfwTerminate();
         return -1;
@@ -58,7 +58,7 @@ int main(int argc, char* argv[]) {
     glfwMakeContextCurrent(window);
 
     // initialize GLEW
-    Glenum err = glewInit();
+    GLenum err = glewInit();
     if (err != GLEW_OK) {
         fprintf(stderr, "Error initializing GLEW.\n");
         glfwTerminate();
