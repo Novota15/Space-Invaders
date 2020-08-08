@@ -33,7 +33,7 @@ void buffer_draw_sprite(Buffer* buffer, const Sprite& sprite, size_t x, size_t y
     }
 }
 
-void build_aliens(Sprite *alien_sprites) {
+void build_alien_sprites(Sprite *alien_sprites) {
     alien_sprites[0].width = 8;
     alien_sprites[0].height = 8;
     alien_sprites[0].data = new uint8_t[64]

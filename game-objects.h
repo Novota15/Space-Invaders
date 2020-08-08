@@ -57,6 +57,6 @@ bool sprite_overlap_check(
 
 void buffer_draw_sprite(Buffer* buffer, const Sprite& sprite, size_t x, size_t y, uint32_t color);
 
-void build_aliens(Sprite *alien_sprites);
+void build_alien_sprites(Sprite *alien_sprites);
 
 #endif
