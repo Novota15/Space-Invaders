@@ -4,6 +4,6 @@
 
 #include "main.h"
 
-void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods, int move_dir, bool fire_pressed, bool game_running);
+void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
 
 #endif

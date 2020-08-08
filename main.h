@@ -10,4 +10,9 @@
 // include GLFW - lightweight opengl library
 #include <GLFW/glfw3.h>
 
+// global vars
+extern int move_dir = 0;
+extern bool fire_pressed = 0;
+extern bool game_running = false;
+
 #endif
