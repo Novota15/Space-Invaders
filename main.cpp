@@ -3,7 +3,7 @@
 // global vars
 bool game_running = false;
 int move_dir = 0;
-bool fire_pressed = 0
+bool fire_pressed = 0;
 
 // error and debug
 #define GL_ERROR_CASE(glerror)\
@@ -276,17 +276,29 @@ int main(int argc, char* argv[]) {
 
     for(size_t yi = 0; yi < 5; ++yi) {
         for(size_t xi = 0; xi < 11; ++xi) {
-            game.aliens[yi * 11 + xi].x = 16 * xi + 20;
-            game.aliens[yi * 11 + xi].y = 17 * yi + 128;
+            Alien& alien = game.aliens[yi * 11 + xi];
+            alien.type = (5 - yi) / 2 + 1;
+
+            const Sprite& sprite = alien_sprites[2 * (alien.type - 1)];
+
+            alien.x = 16 * xi + 20 + (alien_death_sprite.width - sprite.width)/2;
+            alien.y = 17 * yi + 128;
         }
+    }
+
+    uint8_t* death_counters = new uint8_t[game.num_aliens];
+    for (size_t i = 0; i < game.num_aliens; ++i) {
+        death_counters[i] = 10;
     }
 
     uint32_t clear_color = rgb_to_uint32(0, 128, 0);
 
-    int player_move_dir = 1;
+    game_running = true;
+
+    int player_move_dir = 0;
 
     // the game loop
-    while (!glfwWindowShouldClose(window)) {
+    while (!glfwWindowShouldClose(window) && game_running) {
         buffer_clear(&buffer, clear_color);
 
         // Draw
