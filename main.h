@@ -13,4 +13,7 @@
 #include "game-objects.h"
 #include "controls.h"
 
+// global vars
+bool game_running = false;
+
 #endif

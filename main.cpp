@@ -2,11 +2,6 @@
 
 #define GAME_MAX_BULLETS 128
 
-// global vars
-bool game_running = false;
-int move_dir = 0;
-bool fire_pressed = 0;
-
 // error and debug
 #define GL_ERROR_CASE(glerror)\
     case glerror: snprintf(error, sizeof(error), "%s", #glerror)
