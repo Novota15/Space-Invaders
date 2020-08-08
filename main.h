@@ -11,5 +11,6 @@
 #include <GLFW/glfw3.h>
 
 #include "game-objects.h"
+#include "controls.h"
 
 #endif

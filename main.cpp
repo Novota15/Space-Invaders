@@ -36,27 +36,6 @@ void error_callback(int error, const char* description) {
     fprintf(stderr, "Error: %s\n", description);
 }
 
-void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods) {
-    switch (key) {
-    case GLFW_KEY_ESCAPE:
-        if (action == GLFW_PRESS) game_running = false;
-        break;
-    case GLFW_KEY_RIGHT:
-        if (action == GLFW_PRESS) move_dir += 1;
-        else if(action == GLFW_RELEASE) move_dir -= 1;
-        break;
-    case GLFW_KEY_LEFT:
-        if (action == GLFW_PRESS) move_dir -= 1;
-        else if (action == GLFW_RELEASE) move_dir += 1;
-        break;
-    case GLFW_KEY_SPACE:
-        if (action == GLFW_RELEASE) fire_pressed = true;
-        break;
-    default:
-        break;
-    }
-}
-
 void validate_shader(GLuint shader, const char *file = 0) {
     static const unsigned int BUFFER_SIZE = 512;
     char buffer[BUFFER_SIZE];
