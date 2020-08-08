@@ -20,6 +20,37 @@ typedef struct Sprite_Struct
     uint8_t* data;
 } Sprite;
 
+typedef struct Alien_Struct
+{
+    size_t x, y;
+    uint8_t type;
+} Alien;
+
+typedef struct Player_Struct
+{
+    size_t x, y;
+    size_t life;
+} Player;
+
+typedef struct Game_Struct
+{
+    size_t width, height;
+    size_t num_aliens;
+    Alien* aliens;
+    Player player;
+} Game;
+
+typedef struct Sprite_Animation_Struct
+{
+    bool loop;
+    size_t num_frames;
+    size_t frame_duration;
+    size_t time;
+    Sprite** frames;
+} Sprite_Animation;
+
+void buffer_clear(Buffer* buffer, uint32_t color);
+
 bool sprite_overlap_check(
     const Sprite& sp_a, size_t x_a, size_t y_a,
     const Sprite& sp_b, size_t x_b, size_t y_b);

@@ -1,6 +1,13 @@
 #include "main.h"
 #include "game-objects.h"
 
+// clear buffer to a certain color
+void buffer_clear(Buffer* buffer, uint32_t color) {
+    for (size_t i = 0; i < buffer->width * buffer->height; ++i) {
+        buffer->data[i] = color;
+    }
+}
+
 bool sprite_overlap_check(
     const Sprite& sp_a, size_t x_a, size_t y_a,
     const Sprite& sp_b, size_t x_b, size_t y_b) {
