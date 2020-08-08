@@ -211,9 +211,7 @@ int main(int argc, char* argv[]) {
 
     Sprite player_sprite = build_player_sprite();
 
-    Sprite_Animation* alien_animation = new Sprite_Animation;
-
-    SpriteAnimation alien_animation[3];
+    Sprite_Animation alien_animation[3];
 
     for(size_t i = 0; i < 3; ++i) {
         alien_animation[i].loop = true;
