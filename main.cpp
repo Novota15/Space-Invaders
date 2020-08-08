@@ -1,4 +1,6 @@
 #include "main.h"
+#include "game-objects.h"
+#include "controls.h"
 
 #define GAME_MAX_BULLETS 128
 

@@ -10,9 +10,6 @@
 // include GLFW - lightweight opengl library
 #include <GLFW/glfw3.h>
 
-#include "game-objects.h"
-#include "controls.h"
-
 // global vars
 bool game_running = false;
 
