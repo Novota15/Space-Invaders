@@ -213,14 +213,18 @@ int main(int argc, char* argv[]) {
 
     Sprite_Animation* alien_animation = new Sprite_Animation;
 
-    alien_animation->loop = true;
-    alien_animation->num_frames = 2;
-    alien_animation->frame_duration = 10;
-    alien_animation->time = 0;
+    SpriteAnimation alien_animation[3];
 
-    alien_animation->frames = new Sprite*[2];
-    alien_animation->frames[0] = &alien_sprite0;
-    alien_animation->frames[1] = &alien_sprite1;
+    for(size_t i = 0; i < 3; ++i) {
+        alien_animation[i].loop = true;
+        alien_animation[i].num_frames = 2;
+        alien_animation[i].frame_duration = 10;
+        alien_animation[i].time = 0;
+
+        alien_animation[i].frames = new Sprite*[2];
+        alien_animation[i].frames[0] = &alien_sprites[2 * i];
+        alien_animation[i].frames[1] = &alien_sprites[2 * i + 1];
+    }
 
     Game game;
     game.width = buffer_width;
