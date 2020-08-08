@@ -4,6 +4,7 @@
 
 #include <cstdio>
 #include <cstdint>
+#include <GLFW/glfw3.h>
 
 // global vars
 int move_dir = 0;
