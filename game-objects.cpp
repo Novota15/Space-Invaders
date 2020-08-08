@@ -168,7 +168,7 @@ Sprite build_bullet_sprite() {
     return bullet_sprite;
 }
 
-Sprite build_spritesheet() {
+Sprite build_text_spritesheet() {
     Sprite text_spritesheet;
     text_spritesheet.width = 5;
     text_spritesheet.height = 7;
