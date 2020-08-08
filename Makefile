@@ -4,13 +4,16 @@ LFLAGS = -lglfw -lGLU -lGL -lGLEW
 
 all: main
 
-main:  main.o validators.o game-objects.o controls.o 
+main:  main.o validators.o graphics.o game-objects.o controls.o 
 	$(CC) $^ $(LFLAGS) -o invaders
 
 main.o: main.cpp main.h
 	$(CC) -c $< $(CFLAGS)
 
 validators.o: validators.cpp validators.h
+	$(CC) -c $< $(CFLAGS)
+
+graphics.o: graphics.cpp graphics.h
 	$(CC) -c $< $(CFLAGS)
 
 game-objects.o: game-objects.cpp game-objects.h
