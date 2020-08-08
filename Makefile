@@ -1,13 +1,13 @@
-CFLAGS = -c -lglfw -lGLU -lGL -lGLEW
+CFLAGS = -lglfw -lGLU -lGL -lGLEW
 LFLAGS = -lglfw -lGLU -lGL -lGLEW
 
 all: main
 
 invaders: main.o
-	g++ main.o -o $(LFLAGS) invaders
+	g++ main.o $(LFLAGS) -o invaders
 
 main.o: main.cpp
-	g++ main.cpp $(CFLAGS)
+	g++ -c main.cpp $(CFLAGS)
 
 clean:
 	rm -f main
