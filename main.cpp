@@ -229,7 +229,7 @@ int main(int argc, char* argv[]) {
     }
 
     // background color
-    uint32_t clear_color = rgb_to_uint32(56, 51, 99);
+    uint32_t clear_color = rgb_to_uint32(36, 32, 80);
 
     game_running = true;
 
@@ -245,13 +245,13 @@ int main(int argc, char* argv[]) {
 
             const Alien& alien = game.aliens[ai];
             if (alien.type == ALIEN_DEAD) {
-                buffer_draw_sprite(&buffer, alien_death_sprite, alien.x, alien.y, rgb_to_uint32(128, 0, 0));
+                buffer_draw_sprite(&buffer, alien_death_sprite, alien.x, alien.y, rgb_to_uint32(68, 225, 38));
             }
             else {
                 const Sprite_Animation& animation = alien_animation[alien.type - 1];
                 size_t current_frame = animation.time / animation.frame_duration;
                 const Sprite& sprite = *animation.frames[current_frame];
-                buffer_draw_sprite(&buffer, sprite, alien.x, alien.y, rgb_to_uint32(128, 0, 0));
+                buffer_draw_sprite(&buffer, sprite, alien.x, alien.y, rgb_to_uint32(68, 225, 38));
             }
         }
 
