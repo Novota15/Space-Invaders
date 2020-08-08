@@ -86,7 +86,7 @@ int main(int argc, char* argv[]) {
     gl_debug(__FILE__, __LINE__);
 
     // report versions used
-    print("Playing Space Invaders by Grant Novota")
+    printf("Playing Space Invaders by Grant Novota");
     printf("Using OpenGL: %d.%d\n", glVersion[0], glVersion[1]);
     printf("Renderer used: %s\n", glGetString(GL_RENDERER));
     printf("Shading Language: %s\n", glGetString(GL_SHADING_LANGUAGE_VERSION));
