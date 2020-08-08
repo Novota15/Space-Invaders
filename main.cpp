@@ -1,5 +1,7 @@
 #include "main.h"
 
+#define GAME_MAX_BULLETS 128
+
 // global vars
 bool game_running = false;
 int move_dir = 0;
