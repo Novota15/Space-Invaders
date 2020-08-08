@@ -206,6 +206,12 @@ int main(int argc, char* argv[]) {
 
     // prepare game
 
+    Sprite alien_sprites[6];
+    Sprite *aliens;
+    aliens = alien_sprites;
+
+    build_alien_sprites(Sprite *aliens);    
+
     // give it a sprite
     Sprite alien_sprite0;
     alien_sprite0.width = 11;
