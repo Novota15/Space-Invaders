@@ -16,4 +16,5 @@ game-objects.o: game-objects.cpp game-objects.h
 clean:
 	rm -f invaders
 	rm -f *.o
+	rm -f *.h.gch
 	rm -f *~
