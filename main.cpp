@@ -205,7 +205,7 @@ int main(int argc, char* argv[]) {
     Sprite_Animation alien_animation[3];
     build_alien_animation(alien_sprites, alien_animation, alien_update_frequency);
 
-    Sprite_Animation alien_bullet_animation = build_alien_bullet_animation(alien_bullet_sprite, alien_update_frequency);
+    Sprite_Animation alien_bullet_animation = build_alien_bullet_animation(alien_bullet_sprite);
 
     Game game;
     game.width = buffer_width;
