@@ -1,5 +1,5 @@
 // standard C IO header
-#include <cstudio>
+#include <cstdio>
 // include loading library
 #include <GL/glew.h>
 // include GLFW - lightweight opengl library
