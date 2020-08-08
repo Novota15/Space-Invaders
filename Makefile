@@ -3,7 +3,7 @@ LFLAGS = -lglfw -lGLU -lGL -lGLEW
 
 all: main
 
-invaders: main.o
+main: main.o
 	g++ main.o -lglfw -lGLU -lGL -lGLEW -o invaders
 
 main.o: main.cpp
