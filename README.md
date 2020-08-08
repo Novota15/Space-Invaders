@@ -1,4 +1,5 @@
 # Space-Invaders
+A space invaders clone built from scratch using OpenGL.
 
 ## Dependencies
 These are the packages I had installed on Ubuntu:
@@ -14,3 +15,5 @@ You can build the game by using the makefile:
 ```$ make```
 
 This creates the executable binary, which is called **invaders**.
+
+Use the arrow keys to move and the spacebar to shoot.
