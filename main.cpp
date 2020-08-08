@@ -298,7 +298,8 @@ int main(int argc, char* argv[]) {
     int player_move_dir = 0;
 
     // the game loop
-    while (!glfwWindowShouldClose(window) && game_running) {
+    // while (!glfwWindowShouldClose(window) && game_running) {
+    while (true) {    
         buffer_clear(&buffer, clear_color);
 
         // Draw
