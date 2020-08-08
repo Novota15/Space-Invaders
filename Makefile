@@ -5,7 +5,7 @@ LFLAGS = -lglfw -lGLU -lGL -lGLEW
 all: main
 
 main:  main.o validators.o game-objects.o controls.o 
-	$(CC) main.o validators.o game-objects.o controls.o $(LFLAGS) -o invaders
+	$(CC) $^ $(LFLAGS) -o invaders
 
 main.o: main.cpp main.h
 	$(CC) -c main.cpp main.h $(CFLAGS)

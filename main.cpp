@@ -210,8 +210,8 @@ int main(int argc, char* argv[]) {
 
     game.player.life = 3;
 
-    for(size_t yi = 0; yi < 5; ++yi) {
-        for(size_t xi = 0; xi < 11; ++xi) {
+    for (size_t yi = 0; yi < 5; ++yi) {
+        for (size_t xi = 0; xi < 11; ++xi) {
             Alien& alien = game.aliens[yi * 11 + xi];
             alien.type = (5 - yi) / 2 + 1;
 
