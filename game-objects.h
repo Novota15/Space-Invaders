@@ -82,8 +82,12 @@ Sprite build_player_sprite();
 
 Sprite build_bullet_sprite();
 
+Sprite build_alien_bullet_sprites();
+
 Sprite build_text_spritesheet();
 
 void build_alien_animation(Sprite *alien_sprites, Sprite_Animation *alien_animation);
+
+void build_alien_bullet_animation(Sprite *alien_bullet_sprite, Sprite_Animation alien_bullet_animation);
 
 #endif

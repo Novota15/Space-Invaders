@@ -168,6 +168,24 @@ Sprite build_bullet_sprite() {
     return bullet_sprite;
 }
 
+Sprite build_alien_bullet_sprites() {
+    Sprite alien_bullet_sprite[2];
+    alien_bullet_sprite[0].width = 3;
+    alien_bullet_sprite[0].height = 7;
+    alien_bullet_sprite[0].data = new uint8_t[21]
+    {
+        0,1,0,1,0,0,0,1,0,0,0,1,0,1,0,1,0,0,0,1,0,
+    };
+
+    alien_bullet_sprite[1].width = 3;
+    alien_bullet_sprite[1].height = 7;
+    alien_bullet_sprite[1].data = new uint8_t[21]
+    {
+        0,1,0,0,0,1,0,1,0,1,0,0,0,1,0,0,0,1,0,1,0,
+    };
+    return alien_bullet_sprite;
+}
+
 Sprite build_text_spritesheet() {
     Sprite text_spritesheet;
     text_spritesheet.width = 5;
@@ -258,5 +276,17 @@ void build_alien_animation(Sprite *alien_sprites, Sprite_Animation *alien_animat
         alien_animation[i].frames[0] = &alien_sprites[2 * i];
         alien_animation[i].frames[1] = &alien_sprites[2 * i + 1];
     }
+    return;
+}
+
+void build_alien_bullet_animation(Sprite *alien_bullet_sprite, Sprite_Animation alien_bullet_animation) {
+    alien_bullet_animation.loop = true;
+    alien_bullet_animation.num_frames = 2;
+    alien_bullet_animation.frame_duration = 5;
+    alien_bullet_animation.time = 0;
+
+    alien_bullet_animation.frames = new Sprite*[2];
+    alien_bullet_animation.frames[0] = &alien_bullet_sprite[0];
+    alien_bullet_animation.frames[1] = &alien_bullet_sprite[1];
     return;
 }

@@ -1,3 +1,4 @@
+// game graphics functions
 #include "graphics.h"
 
 uint32_t rgb_to_uint32(uint8_t r, uint8_t g, uint8_t b) {

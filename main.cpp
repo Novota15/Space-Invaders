@@ -189,15 +189,21 @@ int main(int argc, char* argv[]) {
     // build sprites
     Sprite alien_sprites[6];
     build_alien_sprites(alien_sprites);
+
     Sprite alien_death_sprite = build_alien_death_sprite();
     Sprite player_sprite = build_player_sprite();
     Sprite bullet_sprite = build_bullet_sprite();
+    Sprite alien_bullet_sprite = build_alien_bullet_sprites();
+
     Sprite text_spritesheet = build_text_spritesheet();
     Sprite number_spritesheet = text_spritesheet;
     number_spritesheet.data += 16 * 35;
 
     Sprite_Animation alien_animation[3];
     build_alien_animation(alien_sprites, alien_animation);
+
+    Sprite_Animation alien_bullet_animation;
+    build_alien_bullet_animation(alien_bullet_sprite, alien_bullet_animation);
 
     Game game;
     game.width = buffer_width;
