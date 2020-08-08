@@ -1,5 +1,6 @@
 CC = gcc
-CFLAGS = -lglfw -lGLU -lGL -lGLEW
+CFLAGS = -c -g 
+LFLAGS = -g -lglfw -lGLU -lGL -lGLEW
 
 all: main
 
