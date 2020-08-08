@@ -207,7 +207,7 @@ int main(int argc, char* argv[]) {
     // prepare game
 
     Sprite alien_sprites[6];
-    build_alien_sprites(Sprite alien_sprites);    
+    build_alien_sprites(alien_sprites);    
 
     // give it a sprite
     Sprite alien_sprite0;
