@@ -41,6 +41,44 @@ uint32_t rgb_to_uint32(uint8_t r, uint8_t g, uint8_t b) {
     return (r << 24) | (g << 16) | (b << 8) | 255;
 }
 
+void buffer_draw_number(Buffer* buffer, const Sprite& number_spritesheet,
+    size_t number, size_t x, size_t y, uint32_t color) {
+    uint8_t digits[64];
+    size_t num_digits = 0;
+
+    size_t current_number = number;
+    do {
+        digits[num_digits++] = current_number % 10;
+        current_number = current_number / 10;
+    }
+    while(current_number > 0);
+
+    size_t xp = x;
+    size_t stride = number_spritesheet.width * number_spritesheet.height;
+    Sprite sprite = number_spritesheet;
+    for(size_t i = 0; i < num_digits; ++i) {
+        uint8_t digit = digits[num_digits - i - 1];
+        sprite.data = number_spritesheet.data + digit * stride;
+        buffer_draw_sprite(buffer, sprite, xp, y, color);
+        xp += sprite.width + 1;
+    }
+}
+
+void buffer_draw_text(Buffer* buffer, const Sprite& text_spritesheet,
+    const char* text, size_t x, size_t y, uint32_t color) {
+    size_t xp = x;
+    size_t stride = text_spritesheet.width * text_spritesheet.height;
+    Sprite sprite = text_spritesheet;
+    for (const char* charp = text; *charp != '\0'; ++charp) {
+        char character = *charp - 32;
+        if(character < 0 || character >= 65) continue;
+
+        sprite.data = text_spritesheet.data + character * stride;
+        buffer_draw_sprite(buffer, sprite, xp, y, color);
+        xp += sprite.width + 1;
+    }
+}
+
 int main(int argc, char* argv[]) {
     // error reporting
     glfwSetErrorCallback(error_callback);
@@ -231,6 +269,10 @@ int main(int argc, char* argv[]) {
     // background color
     uint32_t clear_color = rgb_to_uint32(29, 28, 60);
 
+    // game info
+    size_t score = 0;
+    size_t credits = 0;
+
     game_running = true;
 
     int player_move_dir = 0;
@@ -240,6 +282,19 @@ int main(int argc, char* argv[]) {
         buffer_clear(&buffer, clear_color);
 
         // Draw
+        buffer_draw_text(&buffer, text_spritesheet, "SCORE", 4, game.height - text_spritesheet.height - 7, rgb_to_uint32(128, 0, 0));
+
+        char credit_text[16];
+        sprintf(credit_text, "CREDIT %02lu", credits);
+        buffer_draw_text(&buffer, text_spritesheet, credit_text, 164, 7, rgb_to_uint32(128, 0, 0));
+
+        buffer_draw_number(&buffer, number_spritesheet, score, 4 + 2 * number_spritesheet.width, game.height - 2 * number_spritesheet.height - 12, rgb_to_uint32(128, 0, 0));
+
+        // horizontal line just above the credit text
+        for (size_t i = 0; i < game.width; ++i) {
+            buffer.data[game.width * 16 + i] = rgb_to_uint32(128, 0, 0);
+        }
+
         for (size_t ai = 0; ai < game.num_aliens; ++ai) {
             if (!death_counters[ai]) continue;
 
@@ -311,8 +366,10 @@ int main(int argc, char* argv[]) {
                     alien_sprite, alien.x, alien.y
                 );
                 if (overlap) {
+                    // update score
+                    score += 10 * (4 - game.aliens[ai].type);
                     game.aliens[ai].type = ALIEN_DEAD;
-                    // NOTE: Hack to recenter death sprite
+                    // hack to recenter death sprite
                     game.aliens[ai].x -= (alien_death_sprite.width - alien_sprite.width)/2;
                     game.bullets[bi] = game.bullets[game.num_bullets - 1];
                     --game.num_bullets;
