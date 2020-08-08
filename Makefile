@@ -7,14 +7,15 @@ all: main
 main: main.o game-objects.o controls.o
 	$(CC) main.o game-objects.o $(LFLAGS) -o invaders
 
-main.o: main.cpp main.h
-	$(CC) -c main.cpp main.h $(CFLAGS)
-
 game-objects.o: game-objects.cpp game-objects.h
 	$(CC) -c game-objects.cpp game-objects.h $(CFLAGS)
 
 controls.o: controls.cpp controls.h
 	$(CC) -c controls.cpp controls.h $(CFLAGS)
+
+main.o: main.cpp main.h
+	$(CC) -c main.cpp main.h $(CFLAGS)
+	
 clean:
 	rm -f invaders
 	rm -f *.o
