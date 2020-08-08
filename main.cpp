@@ -208,9 +208,9 @@ int main(int argc, char* argv[]) {
 
     // give it a sprite
     Sprite alien_sprite0;
-    alien_sprite.width = 11;
-    alien_sprite.height = 8;
-    alien_sprite.data = new uint8_t[88]
+    alien_sprite0.width = 11;
+    alien_sprite0.height = 8;
+    alien_sprite0.data = new uint8_t[88]
     {
         0,0,1,0,0,0,0,0,1,0,0, // ..@.....@..
         0,0,0,1,0,0,0,1,0,0,0, // ...@...@...
@@ -251,7 +251,7 @@ int main(int argc, char* argv[]) {
         1,1,1,1,1,1,1,1,1,1,1, // @@@@@@@@@@@
     };
 
-    SpriteAnimation* alien_animation = new SpriteAnimation;
+    Sprite_Animation* alien_animation = new Sprite_Animation;
 
     alien_animation->loop = true;
     alien_animation->num_frames = 2;
