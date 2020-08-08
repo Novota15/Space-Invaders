@@ -102,7 +102,7 @@ int main(int argc, char* argv[]) {
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 
     // create game window
-    GLFWwindow *window = glfwCreateWindow(640, 480, "Space Invaders", NULL, NULL);
+    GLFWwindow* window = glfwCreateWindow(2 * buffer_width, 2 * buffer_height, "Space Invaders", NULL, NULL);
     if(!window) {
         glfwTerminate();
         return -1;
