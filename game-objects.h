@@ -86,7 +86,7 @@ void build_alien_bullet_sprites(Sprite *alien_bullet_sprite);
 
 Sprite build_text_spritesheet();
 
-void build_alien_animation(Sprite *alien_sprites, Sprite_Animation *alien_animation);
+void build_alien_animation(Sprite *alien_sprites, Sprite_Animation *alien_animation, size_t alien_update_frequency);
 
 Sprite_Animation build_alien_bullet_animation(Sprite *alien_bullet_sprite);
 

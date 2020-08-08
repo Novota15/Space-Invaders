@@ -201,10 +201,11 @@ int main(int argc, char* argv[]) {
     Sprite number_spritesheet = text_spritesheet;
     number_spritesheet.data += 16 * 35;
 
+    size_t alien_update_frequency = 120;
     Sprite_Animation alien_animation[3];
     build_alien_animation(alien_sprites, alien_animation);
 
-    Sprite_Animation alien_bullet_animation = build_alien_bullet_animation(alien_bullet_sprite);
+    Sprite_Animation alien_bullet_animation = build_alien_bullet_animation(alien_bullet_sprite, alien_update_frequency);
 
     Game game;
     game.width = buffer_width;

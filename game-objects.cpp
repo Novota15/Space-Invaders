@@ -264,11 +264,11 @@ Sprite build_text_spritesheet() {
     return text_spritesheet;
 }
 
-void build_alien_animation(Sprite *alien_sprites, Sprite_Animation *alien_animation) {
+void build_alien_animation(Sprite *alien_sprites, Sprite_Animation *alien_animation, size_t alien_update_frequency) {
     for (size_t i = 0; i < 3; ++i) {
         alien_animation[i].loop = true;
         alien_animation[i].num_frames = 2;
-        alien_animation[i].frame_duration = 10;
+        alien_animation[i].frame_duration = alien_update_frequency;
         alien_animation[i].time = 0;
 
         alien_animation[i].frames = new Sprite*[2];
