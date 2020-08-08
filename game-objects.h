@@ -88,6 +88,6 @@ Sprite build_text_spritesheet();
 
 void build_alien_animation(Sprite *alien_sprites, Sprite_Animation *alien_animation);
 
-void build_alien_bullet_animation(Sprite *alien_bullet_sprite, Sprite_Animation *alien_bullet_animation);
+Sprite_Animation build_alien_bullet_animation(Sprite *alien_bullet_sprite);
 
 #endif

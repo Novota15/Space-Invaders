@@ -278,7 +278,8 @@ void build_alien_animation(Sprite *alien_sprites, Sprite_Animation *alien_animat
     return;
 }
 
-void build_alien_bullet_animation(Sprite *alien_bullet_sprite, Sprite_Animation *alien_bullet_animation) {
+Sprite_Animation build_alien_bullet_animation(Sprite *alien_bullet_sprite) {
+    Sprite_Animation build_alien_bullet_animation;
     alien_bullet_animation.loop = true;
     alien_bullet_animation.num_frames = 2;
     alien_bullet_animation.frame_duration = 5;
@@ -287,5 +288,5 @@ void build_alien_bullet_animation(Sprite *alien_bullet_sprite, Sprite_Animation 
     alien_bullet_animation.frames = new Sprite*[2];
     alien_bullet_animation.frames[0] = &alien_bullet_sprite[0];
     alien_bullet_animation.frames[1] = &alien_bullet_sprite[1];
-    return;
+    return build_alien_bullet_animation;
 }
