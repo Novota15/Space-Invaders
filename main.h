@@ -12,6 +12,4 @@
 
 #include "game-objects.h"
 
-#define GAME_MAX_BULLETS 128
-
 #endif

@@ -5,6 +5,8 @@
 #include <cstdio>
 #include <cstdint>
 
+#define GAME_MAX_BULLETS 128
+
 // programming CPU is easier than GPU
 // will render on CPU using a buffer then pass to GPU to draw pixels
 typedef struct Buffer_Struct
