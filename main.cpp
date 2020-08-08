@@ -4,6 +4,17 @@
 #include <GL/glew.h>
 // include GLFW - lightweight opengl library
 #include <GLFW/glfw3.h>
+#include <cstdint>
+#include <limits>
+
+// programming CPU is easier than GPU
+// will render on CPU using a buffer then pass to GPU to draw pixels
+struct Buffer
+{
+    size_t width, height;
+    // to store 4 8-bit pixel color values
+    uint32_t* data;
+}
 
 // error and debug
 #define GL_ERROR_CASE(glerror)\
@@ -32,6 +43,15 @@ inline void gl_debug(const char *file, int line) {
 // error events reported through callbacks
 void error_callback(int error, const char* description) {
     fprintf(stderr, "Error: %s\n", description);
+}
+
+// clear buffer to a certain color
+void buffer_clear(Buffer* buffer, uint32_t color)
+{
+    for(size_t i = 0; i < buffer->width * buffer->height; ++i)
+    {
+        buffer->data[i] = color;
+    }
 }
 
 int main(int argc, char* argv[]) {
