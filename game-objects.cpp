@@ -288,5 +288,5 @@ Sprite_Animation build_alien_bullet_animation(Sprite *alien_bullet_sprite) {
     alien_bullet_animation.frames = new Sprite*[2];
     alien_bullet_animation.frames[0] = &alien_bullet_sprite[0];
     alien_bullet_animation.frames[1] = &alien_bullet_sprite[1];
-    return build_alien_bullet_animation;
+    return alien_bullet_animation;
 }
