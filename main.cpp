@@ -228,7 +228,8 @@ int main(int argc, char* argv[]) {
         death_counters[i] = 10;
     }
 
-    uint32_t clear_color = rgb_to_uint32(0, 128, 0);
+    // background color
+    uint32_t clear_color = rgb_to_uint32(56, 51, 99);
 
     game_running = true;
 
