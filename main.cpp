@@ -100,15 +100,15 @@ void query_and_report_opengl_versions() {
 }
 
 // place swarm
-void place_swarm(Game game, Sprite alien_death_sprite, Sprite *alien_sprites) {
+void place_swarm(Game *game, Sprite *alien_death_sprite, Sprite *alien_sprites) {
     for (size_t xi = 0; xi < 11; ++xi) {
         for (size_t yi = 0; yi < 5; ++yi) {
-            Alien& alien = game.aliens[xi * 5 + yi];
+            Alien& alien = game->aliens[xi * 5 + yi];
             alien.type = (5 - yi) / 2 + 1;
 
             const Sprite& sprite = alien_sprites[2 * (alien.type - 1)];
 
-            alien.x = 16 * xi + alien_swarm_position + (alien_death_sprite.width - sprite.width)/2;
+            alien.x = 16 * xi + alien_swarm_position + (alien_death_sprite->width - sprite.width)/2;
             alien.y = 17 * yi + 128;
         }
     }
