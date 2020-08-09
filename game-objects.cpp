@@ -262,6 +262,21 @@ Sprite build_text_spritesheet() {
     return text_spritesheet;
 }
 
+Game build_game() {
+    Game game;
+    game.width = buffer_width;
+    game.height = buffer_height;
+    game.num_bullets = 0;
+    game.num_aliens = 55;
+    game.aliens = new Alien[game.num_aliens];
+
+    game.player.x = 112 - 5;
+    game.player.y = 32;
+
+    game.player.life = 3;
+    return game;
+}
+
 void build_alien_animation(Sprite *alien_sprites, Sprite_Animation *alien_animation, size_t alien_update_frequency) {
     for (size_t i = 0; i < 3; ++i) {
         alien_animation[i].loop = true;

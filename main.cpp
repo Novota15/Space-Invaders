@@ -113,20 +113,8 @@ int main(int argc, char* argv[]) {
         return -1;
     }
 
-    query_and_report_opengl_versions();
     // can make calls to opengl functions now
-    // query the opengl version first
-    // int glVersion[2] = {-1,1};
-    // glGetIntegerv(GL_MAJOR_VERSION, &glVersion[0]);
-    // glGetIntegerv(GL_MINOR_VERSION, &glVersion[1]);
-
-    // gl_debug(__FILE__, __LINE__);
-
-    // // report versions used
-    // printf("Playing Space Invaders, created by Grant Novota\n");
-    // printf("Using OpenGL: %d.%d\n", glVersion[0], glVersion[1]);
-    // printf("Renderer used: %s\n", glGetString(GL_RENDERER));
-    // printf("Shading Language: %s\n", glGetString(GL_SHADING_LANGUAGE_VERSION));
+    query_and_report_opengl_versions();
 
     glClearColor(1.0, 0.0, 0.0, 1.0);
 
@@ -247,17 +235,19 @@ int main(int argc, char* argv[]) {
 
     Sprite_Animation alien_bullet_animation = build_alien_bullet_animation(alien_bullet_sprite);
 
-    Game game;
-    game.width = buffer_width;
-    game.height = buffer_height;
-    game.num_bullets = 0;
-    game.num_aliens = 55;
-    game.aliens = new Alien[game.num_aliens];
+    Game game = build_game();
 
-    game.player.x = 112 - 5;
-    game.player.y = 32;
+    // Game game;
+    // game.width = buffer_width;
+    // game.height = buffer_height;
+    // game.num_bullets = 0;
+    // game.num_aliens = 55;
+    // game.aliens = new Alien[game.num_aliens];
 
-    game.player.life = 3;
+    // game.player.x = 112 - 5;
+    // game.player.y = 32;
+
+    // game.player.life = 3;
 
     size_t alien_swarm_position = 24;
     size_t alien_swarm_max_position = game.width - 16 * 11 - 3;
