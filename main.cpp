@@ -100,7 +100,7 @@ void query_and_report_opengl_versions() {
 }
 
 // place swarm
-void place_swarm(Game game, Sprite *alien_death_sprite, Sprite *alien_sprites) {
+void place_swarm(Game game, Sprite alien_death_sprite, Sprite *alien_sprites) {
     for (size_t xi = 0; xi < 11; ++xi) {
         for (size_t yi = 0; yi < 5; ++yi) {
             Alien& alien = game.aliens[xi * 5 + yi];
