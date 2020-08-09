@@ -262,7 +262,7 @@ Sprite build_text_spritesheet() {
     return text_spritesheet;
 }
 
-Game build_game() {
+Game build_game(size_t buffer_width, size_t buffer_height) {
     Game game;
     game.width = buffer_width;
     game.height = buffer_height;

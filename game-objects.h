@@ -86,7 +86,7 @@ void build_alien_bullet_sprites(Sprite *alien_bullet_sprite);
 
 Sprite build_text_spritesheet();
 
-Game build_game();
+Game build_game(size_t buffer_width, size_t buffer_height);
 
 void build_alien_animation(Sprite *alien_sprites, Sprite_Animation *alien_animation, size_t alien_update_frequency);
 
