@@ -14,8 +14,8 @@
 
 // global vars
 extern bool game_running;
-extern size_t aliens_killed = 0;
-extern size_t alien_update_timer = 0;
-extern bool should_change_speed = false;
+extern size_t aliens_killed;
+extern size_t alien_update_timer;
+extern bool should_change_speed ;
 
 #endif
