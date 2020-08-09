@@ -76,7 +76,7 @@ int main(int argc, char* argv[]) {
     // error reporting
     glfwSetErrorCallback(error_callback);
 
-    if (!initialize_glfw()) return -1;
+    if (initialize_glfw() == -1) return -1;
 
     // initialize the GLFW library
     // if (!glfwInit()) return -1;
