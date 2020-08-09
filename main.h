@@ -16,6 +16,12 @@
 extern bool game_running;
 extern size_t aliens_killed;
 extern size_t alien_update_timer;
-extern bool should_change_speed ;
+extern size_t alien_update_frequency;
+extern bool should_change_speed;
+extern size_t score;
+extern size_t credits;
+extern int alien_move_dir;
+extern int player_move_dir;
+extern size_t alien_swarm_position;
 
 #endif
