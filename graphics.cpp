@@ -1,6 +1,45 @@
 // game graphics functions
 #include "graphics.h"
 
+int initialize_glfw() {
+    // initialize the GLFW library
+    if (!glfwInit()) return -1;
+
+    // give GLFW the appropriate hints before creating window
+    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
+
+    return 0;
+}
+
+GLFWwindow* create_game_window(size_t buffer_width, size_t buffer_height) {
+    GLFWwindow* window = glfwCreateWindow(2 * buffer_width, 2 * buffer_height, "Space Invaders", NULL, NULL);
+    if (!window) {
+        glfwTerminate();
+        // return -1;
+    }
+    // tell GFLW to make subsequent OpenGL calls apply to current 
+    glfwMakeContextCurrent(window);
+    return window;
+}
+
+void query_and_report_opengl_versions() {
+    int glVersion[2] = {-1,1};
+    glGetIntegerv(GL_MAJOR_VERSION, &glVersion[0]);
+    glGetIntegerv(GL_MINOR_VERSION, &glVersion[1]);
+
+    gl_debug(__FILE__, __LINE__);
+
+    // report versions used
+    printf("Playing Space Invaders, created by Grant Novota\n");
+    printf("Using OpenGL: %d.%d\n", glVersion[0], glVersion[1]);
+    printf("Renderer used: %s\n", glGetString(GL_RENDERER));
+    printf("Shading Language: %s\n", glGetString(GL_SHADING_LANGUAGE_VERSION));
+    return;
+}
+
 uint32_t rgb_to_uint32(uint8_t r, uint8_t g, uint8_t b) {
     return (r << 24) | (g << 16) | (b << 8) | 255;
 }

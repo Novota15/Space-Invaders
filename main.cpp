@@ -60,59 +60,44 @@ double random(uint32_t* rng) {
     return (double)xorshift32(rng) / std::numeric_limits<uint32_t>::max();
 }
 
-int initialize_glfw() {
-    // initialize the GLFW library
-    if (!glfwInit()) return -1;
+// int initialize_glfw() {
+//     // initialize the GLFW library
+//     if (!glfwInit()) return -1;
 
-    // give GLFW the appropriate hints before creating window
-    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
+//     // give GLFW the appropriate hints before creating window
+//     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+//     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+//     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+//     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 
-    return 0;
-}
+//     return 0;
+// }
 
-GLFWwindow* create_game_window(size_t buffer_width, size_t buffer_height) {
-    GLFWwindow* window = glfwCreateWindow(2 * buffer_width, 2 * buffer_height, "Space Invaders", NULL, NULL);
-    if (!window) {
-        glfwTerminate();
-        // return -1;
-    }
-    // tell GFLW to make subsequent OpenGL calls apply to current 
-    glfwMakeContextCurrent(window);
-    return window;
-}
+// GLFWwindow* create_game_window(size_t buffer_width, size_t buffer_height) {
+//     GLFWwindow* window = glfwCreateWindow(2 * buffer_width, 2 * buffer_height, "Space Invaders", NULL, NULL);
+//     if (!window) {
+//         glfwTerminate();
+//         // return -1;
+//     }
+//     // tell GFLW to make subsequent OpenGL calls apply to current 
+//     glfwMakeContextCurrent(window);
+//     return window;
+// }
 
-void query_and_report_opengl_versions() {
-    int glVersion[2] = {-1,1};
-    glGetIntegerv(GL_MAJOR_VERSION, &glVersion[0]);
-    glGetIntegerv(GL_MINOR_VERSION, &glVersion[1]);
+// void query_and_report_opengl_versions() {
+//     int glVersion[2] = {-1,1};
+//     glGetIntegerv(GL_MAJOR_VERSION, &glVersion[0]);
+//     glGetIntegerv(GL_MINOR_VERSION, &glVersion[1]);
 
-    gl_debug(__FILE__, __LINE__);
+//     gl_debug(__FILE__, __LINE__);
 
-    // report versions used
-    printf("Playing Space Invaders, created by Grant Novota\n");
-    printf("Using OpenGL: %d.%d\n", glVersion[0], glVersion[1]);
-    printf("Renderer used: %s\n", glGetString(GL_RENDERER));
-    printf("Shading Language: %s\n", glGetString(GL_SHADING_LANGUAGE_VERSION));
-    return;
-}
-
-// place swarm
-void place_swarm(Game *game, Sprite *alien_death_sprite, Sprite *alien_sprites) {
-    for (size_t xi = 0; xi < 11; ++xi) {
-        for (size_t yi = 0; yi < 5; ++yi) {
-            Alien& alien = game->aliens[xi * 5 + yi];
-            alien.type = (5 - yi) / 2 + 1;
-
-            const Sprite& sprite = alien_sprites[2 * (alien.type - 1)];
-
-            alien.x = 16 * xi + alien_swarm_position + (alien_death_sprite->width - sprite.width)/2;
-            alien.y = 17 * yi + 128;
-        }
-    }
-}
+//     // report versions used
+//     printf("Playing Space Invaders, created by Grant Novota\n");
+//     printf("Using OpenGL: %d.%d\n", glVersion[0], glVersion[1]);
+//     printf("Renderer used: %s\n", glGetString(GL_RENDERER));
+//     printf("Shading Language: %s\n", glGetString(GL_SHADING_LANGUAGE_VERSION));
+//     return;
+// }
 
 int main(int argc, char* argv[]) {
     // error reporting
@@ -262,19 +247,18 @@ int main(int argc, char* argv[]) {
     Game game = build_game(buffer_width, buffer_height);
     size_t alien_swarm_max_position = game.width - 16 * 11 - 3;
 
-    // // place swarm
-    void place_swarm(*game, *alien_death_sprite, alien_sprites);
-    // for (size_t xi = 0; xi < 11; ++xi) {
-    //     for (size_t yi = 0; yi < 5; ++yi) {
-    //         Alien& alien = game.aliens[xi * 5 + yi];
-    //         alien.type = (5 - yi) / 2 + 1;
+    // place swarm
+    for (size_t xi = 0; xi < 11; ++xi) {
+        for (size_t yi = 0; yi < 5; ++yi) {
+            Alien& alien = game.aliens[xi * 5 + yi];
+            alien.type = (5 - yi) / 2 + 1;
 
-    //         const Sprite& sprite = alien_sprites[2 * (alien.type - 1)];
+            const Sprite& sprite = alien_sprites[2 * (alien.type - 1)];
 
-    //         alien.x = 16 * xi + alien_swarm_position + (alien_death_sprite.width - sprite.width)/2;
-    //         alien.y = 17 * yi + 128;
-    //     }
-    // }
+            alien.x = 16 * xi + alien_swarm_position + (alien_death_sprite.width - sprite.width)/2;
+            alien.y = 17 * yi + 128;
+        }
+    }
 
     uint8_t* death_counters = new uint8_t[game.num_aliens];
     for (size_t i = 0; i < game.num_aliens; ++i) {
