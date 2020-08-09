@@ -18,29 +18,29 @@ int alien_move_dir = 4;
 int player_move_dir = 0;
 size_t alien_swarm_position = 24;
 
-// error and debug
-#define GL_ERROR_CASE(glerror)\
-    case glerror: snprintf(error, sizeof(error), "%s", #glerror)
+// // error and debug
+// #define GL_ERROR_CASE(glerror)\
+//     case glerror: snprintf(error, sizeof(error), "%s", #glerror)
 
-inline void gl_debug(const char *file, int line) {
-    GLenum err;
-    while((err = glGetError()) != GL_NO_ERROR){
-        char error[128];
+// inline void gl_debug(const char *file, int line) {
+//     GLenum err;
+//     while((err = glGetError()) != GL_NO_ERROR){
+//         char error[128];
 
-        switch(err) {
-            GL_ERROR_CASE(GL_INVALID_ENUM); break;
-            GL_ERROR_CASE(GL_INVALID_VALUE); break;
-            GL_ERROR_CASE(GL_INVALID_OPERATION); break;
-            GL_ERROR_CASE(GL_INVALID_FRAMEBUFFER_OPERATION); break;
-            GL_ERROR_CASE(GL_OUT_OF_MEMORY); break;
-            default: snprintf(error, sizeof(error), "%s", "UNKNOWN_ERROR"); break;
-        }
+//         switch(err) {
+//             GL_ERROR_CASE(GL_INVALID_ENUM); break;
+//             GL_ERROR_CASE(GL_INVALID_VALUE); break;
+//             GL_ERROR_CASE(GL_INVALID_OPERATION); break;
+//             GL_ERROR_CASE(GL_INVALID_FRAMEBUFFER_OPERATION); break;
+//             GL_ERROR_CASE(GL_OUT_OF_MEMORY); break;
+//             default: snprintf(error, sizeof(error), "%s", "UNKNOWN_ERROR"); break;
+//         }
 
-        fprintf(stderr, "%s - %s: %d\n", error, file, line);
-    }
-}
+//         fprintf(stderr, "%s - %s: %d\n", error, file, line);
+//     }
+// }
 
-#undef GL_ERROR_CASE
+// #undef GL_ERROR_CASE
 
 // error events reported through callbacks
 void error_callback(int error, const char* description) {
