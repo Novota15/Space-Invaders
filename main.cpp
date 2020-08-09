@@ -263,7 +263,7 @@ int main(int argc, char* argv[]) {
     size_t alien_swarm_max_position = game.width - 16 * 11 - 3;
 
     // // place swarm
-    void place_swarm(game, alien_death_sprite, alien_sprites);
+    void place_swarm(*game, *alien_death_sprite, alien_sprites);
     // for (size_t xi = 0; xi < 11; ++xi) {
     //     for (size_t yi = 0; yi < 5; ++yi) {
     //         Alien& alien = game.aliens[xi * 5 + yi];
