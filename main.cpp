@@ -60,6 +60,7 @@ int initialize_glfw() {
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
+
     return 0;
 }
 
@@ -69,6 +70,8 @@ GLFWwindow* create_game_window(size_t buffer_width, size_t buffer_height) {
         glfwTerminate();
         // return -1;
     }
+    // tell GFLW to make subsequent OpenGL calls apply to current 
+    glfwMakeContextCurrent(window);
     return window;
 }
 
@@ -76,16 +79,8 @@ int main(int argc, char* argv[]) {
     // error reporting
     glfwSetErrorCallback(error_callback);
 
+    // init glfw library
     if (initialize_glfw() == -1) return -1;
-
-    // initialize the GLFW library
-    // if (!glfwInit()) return -1;
-
-    // give GLFW the appropriate hints before creating window
-    // glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-    // glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-    // glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-    // glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 
     // create game window
     const size_t buffer_width = 224;
@@ -96,7 +91,7 @@ int main(int argc, char* argv[]) {
     glfwSetKeyCallback(window, key_callback);
 
     // tell GFLW to make subsequent OpenGL calls apply to current 
-    glfwMakeContextCurrent(window);
+    // glfwMakeContextCurrent(window);
 
     // initialize GLEW
     GLenum err = glewInit();
