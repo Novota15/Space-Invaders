@@ -1,5 +1,6 @@
 #include "main.h"
 #include "validators.h"
+#include "math-ops.h"
 #include "graphics.h"
 #include "game-objects.h"
 #include "controls.h"
@@ -18,86 +19,10 @@ int alien_move_dir = 4;
 int player_move_dir = 0;
 size_t alien_swarm_position = 24;
 
-// // error and debug
-// #define GL_ERROR_CASE(glerror)\
-//     case glerror: snprintf(error, sizeof(error), "%s", #glerror)
-
-// inline void gl_debug(const char *file, int line) {
-//     GLenum err;
-//     while((err = glGetError()) != GL_NO_ERROR){
-//         char error[128];
-
-//         switch(err) {
-//             GL_ERROR_CASE(GL_INVALID_ENUM); break;
-//             GL_ERROR_CASE(GL_INVALID_VALUE); break;
-//             GL_ERROR_CASE(GL_INVALID_OPERATION); break;
-//             GL_ERROR_CASE(GL_INVALID_FRAMEBUFFER_OPERATION); break;
-//             GL_ERROR_CASE(GL_OUT_OF_MEMORY); break;
-//             default: snprintf(error, sizeof(error), "%s", "UNKNOWN_ERROR"); break;
-//         }
-
-//         fprintf(stderr, "%s - %s: %d\n", error, file, line);
-//     }
-// }
-
-// #undef GL_ERROR_CASE
-
 // error events reported through callbacks
 void error_callback(int error, const char* description) {
     fprintf(stderr, "Error: %s\n", description);
 }
-
-uint32_t xorshift32(uint32_t* rng) {
-    uint32_t x = *rng;
-    x ^= x << 13;
-    x ^= x >> 17;
-    x ^= x << 5;
-    *rng = x;
-    return x;
-}
-
-double random(uint32_t* rng) {
-    return (double)xorshift32(rng) / std::numeric_limits<uint32_t>::max();
-}
-
-// int initialize_glfw() {
-//     // initialize the GLFW library
-//     if (!glfwInit()) return -1;
-
-//     // give GLFW the appropriate hints before creating window
-//     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-//     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-//     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-//     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
-
-//     return 0;
-// }
-
-// GLFWwindow* create_game_window(size_t buffer_width, size_t buffer_height) {
-//     GLFWwindow* window = glfwCreateWindow(2 * buffer_width, 2 * buffer_height, "Space Invaders", NULL, NULL);
-//     if (!window) {
-//         glfwTerminate();
-//         // return -1;
-//     }
-//     // tell GFLW to make subsequent OpenGL calls apply to current 
-//     glfwMakeContextCurrent(window);
-//     return window;
-// }
-
-// void query_and_report_opengl_versions() {
-//     int glVersion[2] = {-1,1};
-//     glGetIntegerv(GL_MAJOR_VERSION, &glVersion[0]);
-//     glGetIntegerv(GL_MINOR_VERSION, &glVersion[1]);
-
-//     gl_debug(__FILE__, __LINE__);
-
-//     // report versions used
-//     printf("Playing Space Invaders, created by Grant Novota\n");
-//     printf("Using OpenGL: %d.%d\n", glVersion[0], glVersion[1]);
-//     printf("Renderer used: %s\n", glGetString(GL_RENDERER));
-//     printf("Shading Language: %s\n", glGetString(GL_SHADING_LANGUAGE_VERSION));
-//     return;
-// }
 
 int main(int argc, char* argv[]) {
     // error reporting

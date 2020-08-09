@@ -24,4 +24,6 @@ extern int alien_move_dir;
 extern int player_move_dir;
 extern size_t alien_swarm_position;
 
+void error_callback(int error, const char* description);
+
 #endif
