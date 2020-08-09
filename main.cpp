@@ -57,7 +57,7 @@ GLFWwindow create_game_window(size_t buffer_width, size_t buffer_height) {
         glfwTerminate();
         // return -1;
     }
-    return window;
+    return *window;
 }
 
 int main(int argc, char* argv[]) {
