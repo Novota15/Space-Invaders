@@ -51,6 +51,18 @@ double random(uint32_t* rng) {
     return (double)xorshift32(rng) / std::numeric_limits<uint32_t>::max();
 }
 
+int initialize_glfw() {
+    // initialize the GLFW library
+    if (!glfwInit()) return -1;
+
+    // give GLFW the appropriate hints before creating window
+    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
+    return 0;
+}
+
 GLFWwindow* create_game_window(size_t buffer_width, size_t buffer_height) {
     GLFWwindow* window = glfwCreateWindow(2 * buffer_width, 2 * buffer_height, "Space Invaders", NULL, NULL);
     if (!window) {
@@ -64,24 +76,21 @@ int main(int argc, char* argv[]) {
     // error reporting
     glfwSetErrorCallback(error_callback);
 
+    if (!initialize_glfw()) return -1;
+
     // initialize the GLFW library
-    if (!glfwInit()) return -1;
+    // if (!glfwInit()) return -1;
 
     // give GLFW the appropriate hints before creating window
-    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
+    // glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+    // glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+    // glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+    // glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 
     // create game window
     const size_t buffer_width = 224;
     const size_t buffer_height = 256;
     GLFWwindow* window = create_game_window(buffer_width, buffer_height);
-    // GLFWwindow* window = glfwCreateWindow(2 * buffer_width, 2 * buffer_height, "Space Invaders", NULL, NULL);
-    // if(!window) {
-    //     glfwTerminate();
-    //     return -1;
-    // }
 
     // arrow key functionality
     glfwSetKeyCallback(window, key_callback);
