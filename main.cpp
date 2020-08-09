@@ -51,7 +51,7 @@ double random(uint32_t* rng) {
     return (double)xorshift32(rng) / std::numeric_limits<uint32_t>::max();
 }
 
-GLFWwindow* create_game_window(size_t buffer_width, size_t buffer_height) {
+GLFWwindow create_game_window(size_t buffer_width, size_t buffer_height) {
     GLFWwindow* window = glfwCreateWindow(2 * buffer_width, 2 * buffer_height, "Space Invaders", NULL, NULL);
     if (!window) {
         glfwTerminate();
@@ -76,7 +76,7 @@ int main(int argc, char* argv[]) {
     // create game window
     const size_t buffer_width = 224;
     const size_t buffer_height = 256;
-    GLWwindow* window = create_game_window(buffer_width, buffer_height);
+    GLFWwindow* window = create_game_window(buffer_width, buffer_height);
     // GLFWwindow* window = glfwCreateWindow(2 * buffer_width, 2 * buffer_height, "Space Invaders", NULL, NULL);
     // if(!window) {
     //     glfwTerminate();
