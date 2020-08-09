@@ -8,6 +8,9 @@
 int move_dir = 0;
 bool fire_pressed = 0;
 bool game_running = false;
+size_t aliens_killed = 0;
+size_t alien_update_timer = 0;
+bool should_change_speed = false;
 
 // error and debug
 #define GL_ERROR_CASE(glerror)\
@@ -235,26 +238,15 @@ int main(int argc, char* argv[]) {
 
     Sprite_Animation alien_bullet_animation = build_alien_bullet_animation(alien_bullet_sprite);
 
+    // build game struct
     Game game = build_game(buffer_width, buffer_height);
-
-    // Game game;
-    // game.width = buffer_width;
-    // game.height = buffer_height;
-    // game.num_bullets = 0;
-    // game.num_aliens = 55;
-    // game.aliens = new Alien[game.num_aliens];
-
-    // game.player.x = 112 - 5;
-    // game.player.y = 32;
-
-    // game.player.life = 3;
 
     size_t alien_swarm_position = 24;
     size_t alien_swarm_max_position = game.width - 16 * 11 - 3;
 
-    size_t aliens_killed = 0;
-    size_t alien_update_timer = 0;
-    bool should_change_speed = false;
+    // size_t aliens_killed = 0;
+    // size_t alien_update_timer = 0;
+    // bool should_change_speed = false;
 
     for (size_t xi = 0; xi < 11; ++xi) {
         for (size_t yi = 0; yi < 5; ++yi) {
