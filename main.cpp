@@ -99,6 +99,21 @@ void query_and_report_opengl_versions() {
     return;
 }
 
+// place swarm
+void place_swarm(Game game, Sprite alien_death_sprite) {
+    for (size_t xi = 0; xi < 11; ++xi) {
+        for (size_t yi = 0; yi < 5; ++yi) {
+            Alien& alien = game.aliens[xi * 5 + yi];
+            alien.type = (5 - yi) / 2 + 1;
+
+            const Sprite& sprite = alien_sprites[2 * (alien.type - 1)];
+
+            alien.x = 16 * xi + alien_swarm_position + (alien_death_sprite.width - sprite.width)/2;
+            alien.y = 17 * yi + 128;
+        }
+    }
+}
+
 int main(int argc, char* argv[]) {
     // error reporting
     glfwSetErrorCallback(error_callback);
@@ -238,7 +253,6 @@ int main(int argc, char* argv[]) {
     Sprite number_spritesheet = text_spritesheet;
     number_spritesheet.data += 16 * 35;
 
-    // size_t alien_update_frequency = 120;
     Sprite_Animation alien_animation[3];
     build_alien_animation(alien_sprites, alien_animation, alien_update_frequency);
 
@@ -246,21 +260,21 @@ int main(int argc, char* argv[]) {
 
     // build game struct
     Game game = build_game(buffer_width, buffer_height);
-
-    // size_t alien_swarm_position = 24;
     size_t alien_swarm_max_position = game.width - 16 * 11 - 3;
 
-    for (size_t xi = 0; xi < 11; ++xi) {
-        for (size_t yi = 0; yi < 5; ++yi) {
-            Alien& alien = game.aliens[xi * 5 + yi];
-            alien.type = (5 - yi) / 2 + 1;
+    // // place swarm
+    // void place_swarm(game, alien_death_sprite);
+    // for (size_t xi = 0; xi < 11; ++xi) {
+    //     for (size_t yi = 0; yi < 5; ++yi) {
+    //         Alien& alien = game.aliens[xi * 5 + yi];
+    //         alien.type = (5 - yi) / 2 + 1;
 
-            const Sprite& sprite = alien_sprites[2 * (alien.type - 1)];
+    //         const Sprite& sprite = alien_sprites[2 * (alien.type - 1)];
 
-            alien.x = 16 * xi + alien_swarm_position + (alien_death_sprite.width - sprite.width)/2;
-            alien.y = 17 * yi + 128;
-        }
-    }
+    //         alien.x = 16 * xi + alien_swarm_position + (alien_death_sprite.width - sprite.width)/2;
+    //         alien.y = 17 * yi + 128;
+    //     }
+    // }
 
     uint8_t* death_counters = new uint8_t[game.num_aliens];
     for (size_t i = 0; i < game.num_aliens; ++i) {
@@ -271,15 +285,7 @@ int main(int argc, char* argv[]) {
     uint32_t clear_color = rgb_to_uint32(29, 28, 60);
     uint32_t rng = 13;
 
-    // int alien_move_dir = 4;
-
-    // game info
-    // size_t score = 0;
-    // size_t credits = 0;
-
     game_running = true;
-
-    // int player_move_dir = 0;
 
     // the game loop
     while (!glfwWindowShouldClose(window) && game_running) {
