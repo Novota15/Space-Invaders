@@ -75,6 +75,21 @@ GLFWwindow* create_game_window(size_t buffer_width, size_t buffer_height) {
     return window;
 }
 
+void query_and_report_opengl_versions() {
+    int glVersion[2] = {-1,1};
+    glGetIntegerv(GL_MAJOR_VERSION, &glVersion[0]);
+    glGetIntegerv(GL_MINOR_VERSION, &glVersion[1]);
+
+    gl_debug(__FILE__, __LINE__);
+
+    // report versions used
+    printf("Playing Space Invaders, created by Grant Novota\n");
+    printf("Using OpenGL: %d.%d\n", glVersion[0], glVersion[1]);
+    printf("Renderer used: %s\n", glGetString(GL_RENDERER));
+    printf("Shading Language: %s\n", glGetString(GL_SHADING_LANGUAGE_VERSION));
+    return;
+}
+
 int main(int argc, char* argv[]) {
     // error reporting
     glfwSetErrorCallback(error_callback);
@@ -90,9 +105,6 @@ int main(int argc, char* argv[]) {
     // arrow key functionality
     glfwSetKeyCallback(window, key_callback);
 
-    // tell GFLW to make subsequent OpenGL calls apply to current 
-    // glfwMakeContextCurrent(window);
-
     // initialize GLEW
     GLenum err = glewInit();
     if (err != GLEW_OK) {
@@ -101,19 +113,20 @@ int main(int argc, char* argv[]) {
         return -1;
     }
 
+    query_and_report_opengl_versions();
     // can make calls to opengl functions now
     // query the opengl version first
-    int glVersion[2] = {-1,1};
-    glGetIntegerv(GL_MAJOR_VERSION, &glVersion[0]);
-    glGetIntegerv(GL_MINOR_VERSION, &glVersion[1]);
+    // int glVersion[2] = {-1,1};
+    // glGetIntegerv(GL_MAJOR_VERSION, &glVersion[0]);
+    // glGetIntegerv(GL_MINOR_VERSION, &glVersion[1]);
 
-    gl_debug(__FILE__, __LINE__);
+    // gl_debug(__FILE__, __LINE__);
 
-    // report versions used
-    printf("Playing Space Invaders, created by Grant Novota\n");
-    printf("Using OpenGL: %d.%d\n", glVersion[0], glVersion[1]);
-    printf("Renderer used: %s\n", glGetString(GL_RENDERER));
-    printf("Shading Language: %s\n", glGetString(GL_SHADING_LANGUAGE_VERSION));
+    // // report versions used
+    // printf("Playing Space Invaders, created by Grant Novota\n");
+    // printf("Using OpenGL: %d.%d\n", glVersion[0], glVersion[1]);
+    // printf("Renderer used: %s\n", glGetString(GL_RENDERER));
+    // printf("Shading Language: %s\n", glGetString(GL_SHADING_LANGUAGE_VERSION));
 
     glClearColor(1.0, 0.0, 0.0, 1.0);
 
